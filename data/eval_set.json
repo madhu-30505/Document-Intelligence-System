@@ -1,0 +1,32 @@
+[
+  {
+    "question": "In which region are ASTM International standards more likely to be adopted?",
+    "ground_truth": "<<< FILL IN THE CORRECT ANSWER BY HAND >>>",
+    "source": "World Development Report 2025.pdf",
+    "page": 192
+  },
+  {
+    "question": "How do governments typically make voluntary standards count?",
+    "ground_truth": "<<< FILL IN THE CORRECT ANSWER BY HAND >>>",
+    "source": "World Development Report 2025.pdf",
+    "page": 25
+  },
+  {
+    "question": "Why are standards considered more important for low- and middle-income countries today than they were for high-income countries at similar stages of development?",
+    "ground_truth": "<<< FILL IN THE CORRECT ANSWER BY HAND >>>",
+    "source": "World Development Report 2025.pdf",
+    "page": 109
+  },
+  {
+    "question": "What implication does the passage suggest about a standards body\u2019s certification arm being part of the same organization that develops the standards?",
+    "ground_truth": "<<< FILL IN THE CORRECT ANSWER BY HAND >>>",
+    "source": "World Development Report 2025.pdf",
+    "page": 169
+  },
+  {
+    "question": "What should practitioners consider when selecting governance standards for their specific institutional and national contexts?",
+    "ground_truth": "<<< FILL IN THE CORRECT ANSWER BY HAND >>>",
+    "source": "World Development Report 2025.pdf",
+    "page": 364
+  }
+]

@@ -1,0 +1,55 @@
+name: Keep Streamlit App Awake
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  wake-app:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install chromium
+
+      - name: Wake Streamlit app
+        run: |
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+
+          url = "https://smart-document-rag.streamlit.app/"
+
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              page = browser.new_page()
+
+              print(f"Opening {url}")
+              page.goto(url, wait_until="domcontentloaded", timeout=60000)
+
+              try:
+                  wake_button = page.get_by_test_id("wakeup-button-viewer")
+                  wake_button.wait_for(state="visible", timeout=15000)
+
+                  print("App is sleeping. Waking it up...")
+                  wake_button.click()
+
+                  page.wait_for_timeout(10000)
+                  print("Wake-up request sent successfully.")
+
+              except Exception:
+                  print("No wake-up button found.")
+                  print("App is probably already awake.")
+
+              browser.close()
+          PY
